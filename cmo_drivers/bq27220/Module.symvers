@@ -1,0 +1,4 @@
+0x13150311	bq27xxx_battery_update	/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/bq27220/bq27xxx_battery	EXPORT_SYMBOL_GPL	
+0xfa558af4	bq27xxx_battery_setup	/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/bq27220/bq27xxx_battery	EXPORT_SYMBOL_GPL	
+0x14b9f417	bq27xxx_battery_teardown	/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/bq27220/bq27xxx_battery	EXPORT_SYMBOL_GPL	
+0x9691726f	bq27xxx_battery_battery_pm_ops	/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/bq27220/bq27xxx_battery	EXPORT_SYMBOL_GPL	
