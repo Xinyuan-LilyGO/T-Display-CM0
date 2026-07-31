@@ -1,0 +1,83 @@
+/dts-v1/;
+/plugin/;
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+#include "xl9555.dtsi"
+/ {
+	compatible = "brcm,bcm2835";
+	fragment@1 {
+		target = <&dsi1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			port {
+				dsi1_out: endpoint {
+					remote-endpoint = <&panel_in>;
+				};
+			};
+
+			panel@0 {
+				compatible = "raydium,rm69a10";
+				reg = <0>;
+				reset-gpios = <&xl9555 9 GPIO_ACTIVE_LOW>;
+				enable-gpios = <&xl9555 7 GPIO_ACTIVE_HIGH>;
+				gpio-expander = <&xl9555>;
+				power-domains = <&power 0>;
+				dsi-lanes = <2>;
+				max-bitrate = <50000000>;
+				vc4,dsi-force-clock = <1>;
+				panel-timing {
+					clock-frequency = <20000000>;
+					hactive = <568>;
+					vactive = <1232>;
+					hfront-porch = <40>;
+					hback-porch = <140>;
+					hsync-len = <10>;
+					vfront-porch = <16>;
+					vback-porch = <40>;
+					vsync-len = <16>;
+				};
+
+				port {
+					panel_in: endpoint {
+						remote-endpoint = <&dsi1_out>;
+					};
+				};
+			};
+		};
+	};
+	
+	fragment@2 {
+		target-path = "/";
+		__overlay__ {
+			i2c_gpio_bus:i2c-gpio {
+                		compatible = "i2c-gpio";
+                		sda-gpios = <&gpio 26 2>;
+                		scl-gpios = <&gpio 16 2>;
+                		i2c-gpio,delay-us = <40>;
+                		i2c-gpio,timeout-ms = <200>;
+                		#address-cells = <1>;
+                		#size-cells = <0>;
+                		status = "okay";
+                		gt9895:touch@5d {
+                    			compatible = "goodix,gt9895";
+                    			reg = <0x5d>;
+                    			interrupt-parent = <&gpio>;
+                    			interrupts = <13 IRQ_TYPE_EDGE_FALLING>;
+                    			irq-gpios = <&gpio 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  
+                    			reset-gpios = <&xl9555 8 GPIO_ACTIVE_LOW>;
+                    			touchscreen-size-x = <1024>;
+                    			touchscreen-size-y = <2400>;
+                    			status = "okay";
+                			};
+            			bq27220_2: bq27220@55 {
+                			compatible = "ti,bq27220";
+                			reg = <0x55>;
+                			status = "okay";
+            				};
+            			};
+			};
+		};
+};

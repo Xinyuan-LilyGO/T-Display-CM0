@@ -1,0 +1,11 @@
+&i2c1 {
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+    xl9555: xl9555@20 {
+	compatible = "nxp,pca9535", "nxp,pca9555";
+	reg = <0x20>;
+	gpio-controller;
+	#gpio-cells = <2>;	
+    };
+};

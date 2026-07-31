@@ -1,0 +1,42 @@
+/dts-v1/;
+/plugin/;
+#include <dt-bindings/gpio/gpio.h>
+#include "xl9555.dtsi"
+&xl9555 {
+    usb_pwr_en {
+        gpio-hog;
+        gpios = <6 GPIO_ACTIVE_HIGH>;
+        output-high;
+        line-name = "usb-pwr-en";
+    };
+    es8388_pctl {
+        gpio-hog;
+        gpios = <10 GPIO_ACTIVE_HIGH>;
+        output-high;
+        line-name = "es8388-pctl";
+    };
+    /*speaker_pctl {
+        gpio-hog;
+        gpios = <11 GPIO_ACTIVE_HIGH>;
+        output-high;
+        line-name = "speaker-pctl";
+    };*/
+    cam_rst {
+        gpio-hog;
+        gpios = <11 GPIO_ACTIVE_HIGH>;
+        output-low;
+        line-name = "cam-rst";
+    };
+    cam_pctl {
+        gpio-hog;
+        gpios = <12 GPIO_ACTIVE_HIGH>;
+        output-high;
+        line-name = "cam-pctl";
+    };
+    lora_pctl {
+        gpio-hog;
+        gpios = <13 GPIO_ACTIVE_HIGH>;
+        output-high;
+        line-name = "lora-pctl";
+    };
+};

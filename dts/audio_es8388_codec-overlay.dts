@@ -1,0 +1,94 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/bcm2835.h>
+#include <dt-bindings/clock/bcm2835.h>
+
+#include "xl9555.dtsi"
+
+/ {
+	compatible = "brcm,bcm2835";
+
+	/* GPIO6 → ALT0 → GPCLK2 */
+	fragment@0 {
+		target = <&gpio>;
+		__overlay__ {
+			gpclk2_pins: gpclk2_pins {
+				brcm,pins = <6>;
+				brcm,function = <BCM2835_FSEL_ALT0>;
+			};
+		};
+	};
+
+	/* GPCLK2 → 12.288MHz */
+	fragment@1 {
+		target = <&clocks>;
+		__overlay__ {
+			assigned-clocks = <&clocks BCM2835_CLOCK_GP2>;
+			assigned-clock-rates = <12288000>;
+			//assigned-clock-rates = <19200000>;
+		};
+	};
+
+	/* I2C1 → ES8388 @ 0x11 */
+	fragment@2 {
+		target = <&i2c1>;
+		__overlay__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			es8388: es8388@11 {
+				compatible = "everest,es8388";
+				reg = <0x11>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&gpclk2_pins>;
+				clocks = <&clocks BCM2835_CLOCK_GP2>;
+				clock-names = "mclk";
+				#sound-dai-cells = <0>; 
+				status = "okay";
+			};
+		};
+	};
+
+	/* Enable I2S */
+	fragment@3 {
+		target = <&i2s>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	/* Simple Audio Card */
+	fragment@4 {
+    		target-path = "/";
+    		__overlay__ {
+        		sound: sound {
+            			compatible = "simple-audio-card";
+            			simple-audio-card,name = "CM0-ES8388";
+            			simple-audio-card,format = "i2s";
+            			simple-audio-card,bitclock-master = <&dailink_cpu>;
+            			simple-audio-card,frame-master = <&dailink_cpu>;
+            			simple-audio-card,widgets =
+                			"Headphone", "Headphone Jack",
+                			"Speaker", "External Speaker",
+                			"Microphone", "Microphone Jack";
+            			simple-audio-card,routing =
+                			"Headphone Jack", "LOUT1",
+                			"Headphone Jack", "ROUT1",
+                			"External Speaker", "LOUT2",
+                			"External Speaker", "ROUT2",
+                			"LINPUT1", "Microphone Jack",
+    					"RINPUT1", "Microphone Jack";
+            		dailink_cpu: simple-audio-card,cpu {
+                		sound-dai = <&i2s>;
+            			};
+            		dailink_codec: simple-audio-card,codec {
+                		sound-dai = <&es8388>;
+                		//system-clock-frequency = <19200000>;
+            			};
+        		};
+    		};
+	};
+};

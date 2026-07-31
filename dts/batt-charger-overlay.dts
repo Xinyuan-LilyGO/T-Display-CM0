@@ -1,0 +1,26 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+&i2c1 {
+    status = "okay";
+
+    bq25896@6b {
+        compatible = "ti,bq25890";
+        reg = <0x6b>;
+        ti,battery-regulation-voltage = <4200000>;
+        ti,charge-current = <2000000>;
+        ti,termination-current = <200000>;
+        ti,precharge-current = <500000>;
+        ti,minimum-sys-voltage       = <3500000>;  
+	ti,boost-voltage             = <5000000>;   
+	ti,boost-max-current         = <1000000>;    
+    };
+
+    bq27220@55 {
+        compatible = "ti,bq27220";
+        reg = <0x55>;
+    };
+};
