@@ -1,0 +1,1 @@
+systemd.run=/boot/firmware/firstrun.sh systemd.unit=kernel-command-line.target

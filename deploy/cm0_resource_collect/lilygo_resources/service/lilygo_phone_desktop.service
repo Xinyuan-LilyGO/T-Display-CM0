@@ -1,0 +1,14 @@
+[Unit]
+Description=LILYGO PHONE DESKTOP
+After=multi-user.target
+[Service]
+ExecStart=__LILYGO_DESKTOP_APP_DIR__/sample_display.out
+Restart=always
+User=root
+WorkingDirectory=__LILYGO_DESKTOP_APP_DIR__
+Environment=LD_LIBRARY_PATH=__LILYGO_RESOURCE_DIR__/lib
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+[Install]
+WantedBy=multi-user.target

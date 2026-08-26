@@ -1,0 +1,13 @@
+[Unit]
+Description=LILYGO keyboard FN daemon
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStartPre=/sbin/modprobe uinput
+ExecStart=/usr/local/bin/keyboard_lilygo
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

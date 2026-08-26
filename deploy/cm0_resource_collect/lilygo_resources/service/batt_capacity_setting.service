@@ -1,0 +1,11 @@
+[Unit]
+Description=Set BQ27220 battery capacity
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/bq27220-unbind-set-bind.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

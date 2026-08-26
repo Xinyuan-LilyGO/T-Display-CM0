@@ -1,0 +1,6 @@
+desktop_lvgl: For testing
+desktop_raspberry: Factory desktop
+The default option provides desktop_lvgl
+
+When you need desktop_raspberry, simply copy the firstrun.sh file in the desktop_raspberry folder and update it to the firstrun.sh file in the cm0_resource_collect folder.
+When you need desktop_lvgl, copy the firstrun.sh file in the desktop_lvgl folder and update it to the firstrun.sh file in the cm0_resource_collect folder.

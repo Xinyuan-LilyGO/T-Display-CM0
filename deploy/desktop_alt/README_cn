@@ -1,0 +1,6 @@
+desktop_lvgl: 测试使用
+desktop_raspberry： 出厂桌面
+默认 提供的是desktop_lvgl
+
+需要desktop_raspberry时，将desktop_raspberry文件夹下的firstrun.sh 拷贝更新cm0_resource_collect文件夹下firstrun.sh 即可
+需要desktop_lvgl时，将desktop_lvgl文件夹下的firstrun.sh 拷贝更新cm0_resource_collect文件夹下firstrun.sh 即可
