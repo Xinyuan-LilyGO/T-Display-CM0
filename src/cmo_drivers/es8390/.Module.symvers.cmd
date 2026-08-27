@@ -1,0 +1,1 @@
+savedcmd_/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/es8390/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/es8390/Module.symvers -T /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/es8390/modules.order -i Module.symvers -e 

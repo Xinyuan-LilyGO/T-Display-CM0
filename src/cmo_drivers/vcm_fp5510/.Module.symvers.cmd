@@ -1,0 +1,1 @@
+savedcmd_/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/vcm_fp5510/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/vcm_fp5510/Module.symvers -T /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/vcm_fp5510/modules.order -i Module.symvers -e 

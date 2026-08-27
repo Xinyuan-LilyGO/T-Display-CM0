@@ -1,0 +1,1 @@
+savedcmd_/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/RX8130/rtc-rx8130.mod := printf '%s\n'   rtc-rx8130.o | awk '!x[$$0]++ { print("/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/RX8130/"$$0) }' > /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/RX8130/rtc-rx8130.mod
