@@ -75,7 +75,7 @@
             			bq27220_2: bq27220@55 {
                 			compatible = "ti,bq27220";
                 			reg = <0x55>;
-                			status = "okay";
+                			status = "disabled";
             				};
             			};
 			};
