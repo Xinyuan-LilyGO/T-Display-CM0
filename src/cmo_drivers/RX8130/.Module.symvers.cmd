@@ -1,1 +1,0 @@
-savedcmd_/home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/RX8130/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/RX8130/Module.symvers -T /home/admin/pro/raspberry_cm0_stable_20250916/rpi_drives/rpi-drivers/RX8130/modules.order -i Module.symvers -e 
